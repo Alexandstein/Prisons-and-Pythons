@@ -1,4 +1,9 @@
 Alexander Stein 2014
 ===PRISONS AND PYTHONS===
-	This is just a silly little Dungeons and Dragons character manager I decided to write
-one day.
+	This is just a little Dungeons and Dragons character manager I decided to start 
+writing one day. Not necessarily strictly DnD though-- if I make good headway with this 
+I will probably make it extensible.
+	At the moment, I'm trying to design the abstract character class to be extensible to
+most RPG character needs so that people may subclass it for their own needs.
+Ideally subclassing might not be needed and template files can be used to construct
+RPG character bases.
