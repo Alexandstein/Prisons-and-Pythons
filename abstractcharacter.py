@@ -235,12 +235,5 @@ def load(charFile):
 		if re.match('^\\t', line):
 			setterFunction(line.strip(), fromSerialized = True)
 		else:
-			#Switch adding modes based on non-indented lines. Potentially get rid of
-			#cases and just have the program call functions by string? TODO
-			if	(line.strip() == 'attributes'):
-				setterFunction = char.addToAttributes
-			elif(line.strip() == 'stats'):
-				setterFunction = char.addToStats
-			elif(line.strip() == 'modifiers'):
-				setterFunction = char.addToModifiers
+			setterFunction = getattr(char, 'addTo' + line.strip().capitalize())
 	return char
