@@ -15,7 +15,8 @@ class Modifier(object):
 		self.description = description
 		self.stats = {}
 		for stat in statList:
-			self.stats.update({stat: 0})
+			stat = stat.split(':')
+			self.stats.update({stat[0]: stat[1]})
 	
 	def __str__(self):
 		output = '%s|%s|' % (self.name, self.description)
@@ -124,11 +125,8 @@ class AbstractCharacter(object):
 			(void)
 		'''
 		if fromSerialized:
-			return
-			#TODO
-			modData = fromSerialized.split('|')
-			mod = Modifier()
-			#TODO
+			modData = mod.split('|')
+			mod = Modifier(modData[0], modData[1], modData[2:])
 		self.charData['modifiers'].append(mod)
 	
 	def dropModifier(self, mod):
