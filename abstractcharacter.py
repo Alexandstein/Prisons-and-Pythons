@@ -74,7 +74,7 @@ class AbstractCharacter(object):
 		self.charData['stats'] = {}
 		self.charData['modifiers'] = []
 	
-	def addStat(self, stat, init = 0, fromSerialized = False):
+	def addToStats(self, stat, init = 0, fromSerialized = False):
 		''' Adds a stat to the character
 		Args:
 			stat (string)
@@ -95,7 +95,7 @@ class AbstractCharacter(object):
 			stat, init = stat[0], int(stat[1])
 		self.charData['stats'].update({stat:init})
 
-	def addAttribute(self, attr, init = '', fromSerialized = False):
+	def addToAttributes(self, attr, init = '', fromSerialized = False):
 		''' Adds a attribute to the character
 		Args:
 			attr (string)
@@ -113,7 +113,7 @@ class AbstractCharacter(object):
 			attr, init = attr[0], attr[1]
 		self.charData['attributes'].update({attr:init})
 	
-	def addModifier(self, mod, fromSerialized = False):
+	def addToModifiers(self, mod, fromSerialized = False):
 		''' Adds a attribute to the character
 		Args:
 			mod (Modifier) (string)
@@ -238,9 +238,9 @@ def load(charFile):
 			#Switch adding modes based on non-indented lines. Potentially get rid of
 			#cases and just have the program call functions by string? TODO
 			if	(line.strip() == 'attributes'):
-				setterFunction = char.addAttribute
+				setterFunction = char.addToAttributes
 			elif(line.strip() == 'stats'):
-				setterFunction = char.addStat
+				setterFunction = char.addToStats
 			elif(line.strip() == 'modifiers'):
-				setterFunction = char.addModifier
+				setterFunction = char.addToModifiers
 	return char
